@@ -1,15 +1,20 @@
 <?php
 
+use App\Http\Controllers\JoinLiveController;
+use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SermonsController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/','welcome');
+
+Route::get('/', WelcomeController::class);
 
 Route::view('/about','about')->name("about");
 
-Route::view('/join-us','join_us')->name("join_us");
-Route::view('/sermons','sermons')->name("sermons");
-Route::view('/live','about')->name("live");
+Route::resource('/join-us', JoinUsController::class)->only("index","store");
+Route::get('/sermons', SermonsController::class)->name("sermons");
+Route::get('/live', JoinLiveController::class)->name("live");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

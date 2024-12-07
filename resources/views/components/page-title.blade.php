@@ -1,9 +1,9 @@
-@props(['title', 'text', 'current' => "" ])
+@props(['title', 'text', 'current' => "", 'image' => "assets/img/people/sermons.jpg" ])
 
 <!-- Page Title -->
-<div class="page-title" data-aos="fade">
-    <div class="heading">
-      <div class="container">
+<div class="page-title" data-aos="fade" >
+    <div class="heading" style="background: url({{asset($image)}});background-size: cover;width: 100%">
+      <div class="container" >
         <div class="row d-flex justify-content-center text-center">
           <div class="col-lg-8">
             <h1 class="">{{$title}}<br></h1>

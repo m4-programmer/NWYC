@@ -1,9 +1,9 @@
 <x-guest-layout>
 
     <!-- Page Title -->
-    <x-page-title title="Sermons" current="Sermons" >
+    <x-page-title title="Sermons" current="Sermons" image="assets/img/people/sermons.jpg" >
         <p>
-            Welcome to our collections of God's word
+            We hope that these messages will be a blessing to you.
         </p>
     </x-page-title>
   <!-- End Page Title -->
