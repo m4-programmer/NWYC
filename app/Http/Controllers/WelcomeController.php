@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -41,6 +42,7 @@ class WelcomeController extends Controller
 //                "image" => "assets/img/testimonials/testimonials-4.jpg"
 //            ]
         ])->map(fn($item) => (object)$item);
-        return view('welcome', compact("testimonials"));
+        $sermons = Media::video()->latest()->take(3)->get();
+        return view('welcome', compact("testimonials","sermons"));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class SermonsController extends Controller
@@ -11,6 +12,7 @@ class SermonsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('sermons');
+        $sermons = Media::video()->latest()->get();
+        return view('sermons', compact('sermons'));
     }
 }

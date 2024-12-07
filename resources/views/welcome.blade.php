@@ -53,7 +53,7 @@
                 <h2 class="text-center text-main-color">Recent Sermons</h2>
             </div>
 
-           <x-sermons />
+           <x-sermons :sermons="$sermons" />
 
          </section><!-- /Sermon Section -->
 </x-guest-layout>

@@ -9,9 +9,8 @@
   <!-- End Page Title -->
 
     {{-- Sermon's List --}}
-
     <section id="course-list" class="section courses-list">
-        <x-sermons />
+        <x-sermons :sermons="$sermons" />
     </section>
 
 
