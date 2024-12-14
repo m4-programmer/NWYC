@@ -44,6 +44,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.authors.index')}}" class="nav-link @if (Route::currentRouteName() === 'admin.authors.index') active @endif">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Manage Authors
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('admin.videos.index')}}" class="nav-link @if (Route::currentRouteName() === 'admin.videos.index') active @endif">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -60,6 +69,18 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="#" class="nav-link"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="nav-icon fas fa-server"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
