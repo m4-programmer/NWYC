@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->enum("type", [Media::VIDEO, Media::AUDIO]);
             $table->foreignId('video_tag_id')->nullable()->constrained('video_tags');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string("title");
             $table->string("description")->nullable();
             $table->unique(['title','type']);
