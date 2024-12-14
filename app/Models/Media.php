@@ -64,7 +64,7 @@ class Media extends Model
                 $embedHtml = $embed->html(['width' => 350]);
 
                 // Cache the embedded HTML for future use.
-                Cache::put($value, $embedHtml, now()->addMinutes(60));
+                Cache::put($value, $embedHtml, now()->addMinutes(3600));
 
                 return $embedHtml;
             }

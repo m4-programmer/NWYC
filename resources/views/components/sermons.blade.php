@@ -51,17 +51,17 @@
 
                         <h3><a href="{{url("")}}">{{$data->title}}</a></h3>
                         <p class="description">{!! $data->description !!}</p>
-                        {{--            <div class="trainer d-flex justify-content-between align-items-center">--}}
-                        {{--                <div class="trainer-profile d-flex align-items-center">--}}
-                        {{--                <img src="{{asset('assets/img/trainers/trainer-1-2.jpg')}}" class="img-fluid" alt="">--}}
-                        {{--                <a href="" class="trainer-link">Antonio</a>--}}
-                        {{--                </div>--}}
-                        {{--                <div class="trainer-rank d-flex align-items-center">--}}
-                        {{--                <i class="bi bi-person user-icon"></i>&nbsp;50--}}
-                        {{--                &nbsp;&nbsp;--}}
-                        {{--                <i class="bi bi-heart heart-icon"></i>&nbsp;65--}}
-                        {{--                </div>--}}
-                        {{--            </div>--}}
+                            <div class="trainer d-flex justify-content-between align-items-center">
+                                <div class="trainer-profile d-flex align-items-center">
+                                    <img src="{{asset($data?->user?->image)}}" class="img-fluid" alt="">
+                                    <a href="" class="trainer-link">{{$data?->user?->name}}</a>
+                                </div>
+                                <div class="trainer-rank d-flex align-items-center d-none">
+                                    <i class="bi bi-person user-icon"></i>&nbsp;50
+                                    &nbsp;&nbsp;
+                                    <i class="bi bi-heart heart-icon"></i>&nbsp;65
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,14 @@ class SermonsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $sermons = Media::video()->latest()->get();
+        $sermons = Media::video()
+            ->when($request->query("tag"), function ($query) use ($request){
+                $query->whereHas("tag", function ($q) use ($request){
+                    $q->where("slug", $request->query("tag"));
+                });
+            })
+            ->latest()
+            ->get();
         return view('sermons', compact('sermons'));
     }
 }
