@@ -32,4 +32,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //Admin Routes
-Route::prefix('admin')->name('admin.')->group(base_path('routes/admin.php'));
+Route::prefix('admin')->middleware("auth")->name('admin.')->group(base_path('routes/admin.php'));
