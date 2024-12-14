@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/jqvmap/jqvmap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Daterange picker -->
@@ -135,6 +136,25 @@
 {{--<script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>--}}
 
 <!-- Page specific script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
+<script>
+    @if(session('error'))
+    Swal.fire({
+        title: 'Error!',
+        text: '{{session('error')}}',
+        icon: 'error',
+        confirmButtonText: 'Okay'
+    })
+    @endif
+    @if(session('success'))
+    Swal.fire({
+        title: 'Success!',
+        text: '{{session('success')}}',
+        icon: 'success',
+        confirmButtonText: 'Okay'
+    })
+    @endif
+</script>
 <script>
     $(function () {
         $("#example1").DataTable({
