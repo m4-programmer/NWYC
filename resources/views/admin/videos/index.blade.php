@@ -40,7 +40,7 @@
                                         <td><?php echo $sn;  $sn++?></td>
                                         <td>{{$data?->title}}</td>
                                         <td>{{$data?->tag?->title}}</td>
-                                        <td>{{$data?->url}}</td>
+                                        <td>{{$data?->url_string}}</td>
                                         <td>{{$data->views}}</td>
                                         <td>
                                             {{$data->status ? "Active" : "Inactive"}}
@@ -99,7 +99,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tag</label>
                             <select name="video_tag_id" id="" class="form-control">
-                                <option value="" disabled> Select Video Tag</option>
+                                <option value="" disabled selected> Select Video Tag</option>
                                 @forelse($tags as $data)
                                     <option value="{{$data->id}}"> {{$data->title}}</option>
                                 @empty
@@ -110,6 +110,22 @@
                             <label for="" class="text-danger">{{$message}}</label>
                             @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Select Author</label>
+                            <select name="user_id" id="" class="form-control">
+                                <option value="" disabled selected> Select Author</option>
+                                @forelse($users as $data)
+                                    <option value="{{$data->id}}"> {{$data->name}}</option>
+                                @empty
+
+                                @endforelse
+                            </select>
+                            @error('user_id')
+                            <label for="" class="text-danger">{{$message}}</label>
+                            @enderror
+                        </div>
+
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Youtube Link</label>

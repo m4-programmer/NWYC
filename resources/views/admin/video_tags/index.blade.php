@@ -36,11 +36,11 @@
                                 <tr>
                                     <td><?php echo $sn;  $sn++?></td>
                                     <td>{{$data->title}}</td>
-                                    <td>{{$data->user->name}}</td>
+                                    <td>{{$data?->user?->name}}</td>
                                     <td><span class="badge badge-{{($data->status == 'active') ? 'success' : 'danger'}}">{{ $data->status}}</span></td>
                                     <td>
                                         {{$data->media->count()}}
-                                        <a href="{{route('sermons')}}" target="__blank" class="btn btn-primary"><i class="fas fa-search"></i></a>
+                                        <a href="{{route('sermons')."?tag={$data->slug}"}}" target="__blank" class="btn btn-primary"><i class="fas fa-search"></i></a>
                                     </td>
                                     <td>{{$data->slug}}</td>
                                     <td>{{$data->created_at->format('F d Y')}}</td>

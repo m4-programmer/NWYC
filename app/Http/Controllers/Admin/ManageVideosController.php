@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Media;
+use App\Models\User;
 use App\Models\VideoTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,8 @@ class ManageVideosController extends Controller
     {
         $videos = Media::where("type", "video")->orderBy('created_at','desc')->with('tag')->get();
         $tags = VideoTag::get();
-        return view('admin.videos.index',compact('videos', 'tags'));
+        $users = User::where("role", "user")->get();
+        return view('admin.videos.index',compact('videos', 'tags', 'users'));
     }
 
     /**
@@ -39,7 +41,8 @@ class ManageVideosController extends Controller
             'url' => 'required',
             'description' => 'filled',
             'cover'=>'nullable|mimes:png,jpg',
-            'video_tag_id' => 'required|exists:video_tags,id'
+            'video_tag_id' => 'required|exists:video_tags,id',
+            'user_id' => 'required|exists:users,id'
         ]);
         if ($request->hasFile('cover')) {
             $cover = 'asset/uploads/userImage' . '/' . Str::random(32) . '.' . $request->cover->getClientOriginalExtension();
@@ -49,7 +52,6 @@ class ManageVideosController extends Controller
         $data['type'] = Media::VIDEO;
         $data['status'] = true;
         $data['cover'] = isset($cover) ? $cover : null;
-
         $result = Media::create($data);
         if ($result){
             $message = 'video created successfully';

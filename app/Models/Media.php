@@ -17,11 +17,23 @@ class Media extends Model
 
     protected $guarded= [];
 
+    protected $appends = ['url_string'];
+
     protected $casts = ["meta_data" => "json"];
 
+    public function getUrlStringAttribute()
+    {
+        return $this->url;
+    }
+
+    /*Models*/
     public function tag()
     {
         return $this->belongsTo(VideoTag::class, 'video_tag_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     public function scopeVideo(Builder $q): void
     {
