@@ -76,7 +76,7 @@
                   </div>--}}
 
                   <div class="col-md-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Prayer Point, if any" required=""></textarea>
+                    <textarea class="form-control" name="text" rows="6" placeholder="Prayer Point, if any" required=""></textarea>
                   </div>
 
                   <div class="col-md-12 text-center">
