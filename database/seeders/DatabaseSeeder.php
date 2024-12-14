@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'nwyc@admin.com',
             "role" => "admin",
         ]);
+
+        (new VideoTagSeeder)->run();
     }
 }
