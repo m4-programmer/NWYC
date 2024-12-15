@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class JoinLiveController extends Controller
@@ -11,6 +12,7 @@ class JoinLiveController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('live');
+        $live = Media::video()->latest()->first()->append("url_string");
+        return view('live', compact("live"));
     }
 }
