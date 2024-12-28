@@ -12,7 +12,7 @@ class JoinLiveController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $live = Media::video()->latest()->first()->append("url_string");
+        $live = Media::video()->latest()?->first()?->append("url_string");
         return view('live', compact("live"));
     }
 }
