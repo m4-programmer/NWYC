@@ -29,7 +29,7 @@
             <!-- Video Section -->
             <div class="col-lg-6">
                 <div class="ratio ratio-16x9">
-                    <iframe src="{{$live->url_string}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="{{$live?->url_string ?: 'https://www.youtube.com/embed/default_video_id'}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
                 <div class="row mt-5">
