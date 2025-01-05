@@ -17,7 +17,7 @@
           <h2 data-aos="fade-up" data-aos-delay="100" class="">We Are Raising Leaders <br>That Will Influence The <br>World Positively</h2>
           <p data-aos="fade-up" data-aos-delay="200">And we are happy to have you here</p>
           <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-            <a href="{{route('join-us.index')}}" class="btn-get-started">Join Us Live</a>
+            <a href="{{route('live')}}" class="btn-get-started">Join Us Live</a>
           </div>
         </div>
 
