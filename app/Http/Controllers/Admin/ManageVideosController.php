@@ -7,6 +7,7 @@ use App\Models\Media;
 use App\Models\User;
 use App\Models\VideoTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,7 @@ class ManageVideosController extends Controller
      */
     public function index()
     {
+
         $videos = Media::where("type", "video")->orderBy('created_at','desc')->with('tag')->get();
         $tags = VideoTag::get();
         $users = User::where("role", "user")->get();
@@ -42,7 +44,8 @@ class ManageVideosController extends Controller
             'description' => 'filled',
             'cover'=>'nullable|mimes:png,jpg',
             'video_tag_id' => 'required|exists:video_tags,id',
-            'user_id' => 'required|exists:users,id'
+            'user_id' => 'required|exists:users,id',
+            "created_at" => "nullable"
         ]);
         if ($request->hasFile('cover')) {
             $cover = 'asset/uploads/userImage' . '/' . Str::random(32) . '.' . $request->cover->getClientOriginalExtension();
@@ -52,14 +55,20 @@ class ManageVideosController extends Controller
         $data['type'] = Media::VIDEO;
         $data['status'] = true;
         $data['cover'] = isset($cover) ? $cover : null;
+        if ($request->created_at){
+            $data['created_at'] = Carbon::parse($request->created_at);
+        }
         $result = Media::create($data);
         if ($result){
+//            dd($result);
             $message = 'video created successfully';
             Session::put('message',$message);
+//            return "success";
             return back()->with(['success',$message]);
         }else{
             $message = 'an error occurred';
             Session::put('message',$message);
+            return "An error occurred";
             return back()->with(['error',$message]);
         }
     }

@@ -20,16 +20,16 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-striped">
+                            <table id="example2" class="table table-bordered table-responsive table-striped">
                                 <thead>
                                 <tr>
                                     <th>S/N</th>
                                     <th>Title</th>
                                     <th>Tag</th>
                                     <th>Youtube Link</th>
-                                    <th>Views</th>
+                                    <th>Created at</th>
+{{--                                    <th>Views</th>--}}
                                     <th>Status</th>
-                                    <th>Created_at</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -41,11 +41,11 @@
                                         <td>{{$data?->title}}</td>
                                         <td>{{$data?->tag?->title}}</td>
                                         <td>{{$data?->url_string}}</td>
-                                        <td>{{$data->views}}</td>
+                                        <td>{{$data->created_at->format('F-d-Y')}}</td>
+{{--                                        <td>{{$data->views}}</td>--}}
                                         <td>
                                             {{$data->status ? "Active" : "Inactive"}}
                                         </td>
-                                        <td>{{$data->created_at->format('F d Y')}}</td>
                                         <td class="d-flex justify-content-between">
 {{--                                            <div>--}}
 {{--                                                <a class="btn btn-success btn-sm" href="{{route('admin.videos.edit',$data->slug)}}" title="View Video"><i class="fas fa-edit"></i></a>--}}
@@ -168,6 +168,15 @@
                         <label for="" class="text-danger">{{$message}}</label>
                         @enderror
 
+                    </div>
+
+                    {{--Created At--}}
+                    <div class="form-group">
+                        <label for="">Created At</label>
+                        <input type="date" name="created_at" class="form-control">
+                        @error('created_at')
+                        <label for="" class="text-danger">{{$message}}</label>
+                        @enderror
                     </div>
 
                 </div>

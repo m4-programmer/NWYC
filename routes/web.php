@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(RegisterWebsiteTraffic::class)->group(function (){
-    Route::get('/', WelcomeController::class);
+    Route::get('/', WelcomeController::class)->name('welcome');
 
     Route::view('/about','about')->name("about");
 
