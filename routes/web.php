@@ -15,7 +15,7 @@ Route::middleware(RegisterWebsiteTraffic::class)->group(function (){
     Route::view('/about','about')->name("about");
 
     Route::resource('/join-us', JoinUsController::class)->only("index","store");
-    Route::get('/sermons', SermonsController::class)->name("sermons");
+    Route::get('/all-sermons', SermonsController::class)->name("sermons");
     Route::get('/live', JoinLiveController::class)->name("live");
 });
 
